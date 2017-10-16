@@ -2,12 +2,15 @@ import os
 from behave import given, then
 
 
-@given('the pdf file "{pdf_path}" is sent to be analized')
+@given('the pdf file "{pdf_path}" is sent to be analysed')
 def create_job_analysis_step(context, pdf_path):
-    full_pdf_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), pdf_path)
-    client = context.config.userdata['client']
+    # Get the full pdf path
+    dir_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    full_path = os.path.join(dir_path, pdf_path)
 
-    job = client.create_job(local_file=full_pdf_path, wait_to_complete=True)
+    # Create a new job analysis
+    client = context.config.userdata['client']
+    job = client.create_job(local_file=full_path, wait_to_complete=True)
     context.config.userdata['job'] = job
 
 
