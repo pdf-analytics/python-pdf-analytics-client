@@ -9,13 +9,8 @@ It uploads both the test results and the test description at tht same time.
 """
 import os
 import time
-import json
-import logging
 
 from pdf_analytics_client.api_request import APIRequest
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 
 class JobClass:
@@ -39,8 +34,8 @@ class JobClass:
             return
 
     def get_status(self):
-        _, status = self.__client(uri='job/get_status/')
-        return status
+        _, response = self.__client.send_get(uri='job/{id}/get_status/'.format(id=self.id))
+        return response['status']
 
     def verify_image(self):
         pass
@@ -68,20 +63,10 @@ class APIClient:
         :param wait_to_complete: wait for the PDF analysis to complete
         :return: The JobClass object,
         """
-        #files = {'file': ('demo_file.pdf', open(local_file, 'rb'), 'application/pdf')}
-        with open(local_file, 'rb') as f:
-            filename = 'demo_file.pdf'
-            files = {'file': f,
-                     'blee':'fsdfsd'}
-
-        #opend_file = open(local_file, 'rb')
-
-        #files = {'file':('demo_file.pdf', opend_file, 'application/pdf')}
-        #files = {'file': '{path}'.format(path=local_file)}
-
-            _, job_id = self.client.send_post(uri='job/upload/', ofile=files)
-        print(job_id )
-        job_obj = JobClass(id=job_id['id'], client=self.client)
+        file_name = os.path.basename(local_file)
+        files = {'file': (file_name, open(local_file, 'rb'))}
+        _, response = self.client.send_post(uri='job/upload/', ofile=files)
+        job_obj = JobClass(id=response['id'], client=self.client)
 
         if wait_to_complete:
             job_obj.wait_analysis_to_complete()

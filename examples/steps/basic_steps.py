@@ -7,7 +7,7 @@ def create_job_analysis_step(context, pdf_path):
     full_pdf_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), pdf_path)
     client = context.config.userdata['client']
 
-    job = client.create_job(local_file=full_pdf_path, wait_to_complete=False)
+    job = client.create_job(local_file=full_pdf_path, wait_to_complete=True)
     context.config.userdata['job'] = job
 
 
