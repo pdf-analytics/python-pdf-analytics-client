@@ -1,7 +1,7 @@
 # python-pdf-analytics-client
 PDF Analytics client API library
 
-PDF Analytics is a service which lets you use to verify PDF content for free. 
+PDF Analytics is a web service which lets you use to verify PDF content for free. 
 
 This library allows you to automate most common PDF Analytics operations using Python 3.6.
 
@@ -26,7 +26,7 @@ There are are two ways to verify a PDF content.
 from pdf_analytics_client import APIClient
 
 # Connect to the Server
-analytics_server = APIClient(token='my_token', password='my_password')
+analytics_server = APIClient(token='my_token')
 
 # Create a PDF analysis job
 pdf_job = analytics_server.create_job(local_file='/Users/tester/demo.pdf')
