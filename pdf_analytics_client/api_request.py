@@ -16,16 +16,17 @@ class APIRequest(object):
 
     def __init__(self, token):
         self.token = token
-        self.__url = 'https://pdf-analytics.com/api/'
+        #self.__url = 'https://pdf-analytics.com/api/'
+        self.__url = 'http://localhost:8000/api/'
 
-    def send_get(self, uri, ojson=None):
+    def send_get(self, uri, data=None, ojson=None):
         """ Send GET
         Issues a GET request (read) against the API and returns the result (as Python dict).
 
         :param uri: The API method to call including parameters
         :return: the result (as Python dict)
         """
-        return self.__send_request('GET', uri=uri, ojson=ojson)
+        return self.__send_request('GET', uri=uri, data=data, ojson=ojson)
 
     def send_post(self, uri, data=None, ofile=None, ojson=None):
         """Send POST
@@ -56,7 +57,7 @@ class APIRequest(object):
         else:
             raise Exception('Method not found')
 
-        if api_request.status_code != 200:
+        if api_request.status_code != requests.codes.ok:
             print('Error in API request: {text}'.format(text=api_request.text))
 
         # Return a json file, if the response is JSON

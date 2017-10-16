@@ -43,8 +43,17 @@ class JobClass:
     def verify_text(self):
         pass
 
-    def get_item(self):
-        pass
+    def get_item(self, left, top, page, type='any'):
+        request_json = {
+            'id': int(self.id),
+            'page': int(page),
+            'type': type,
+            'top': int(top),
+            'left': int(left)
+        }
+
+        _, response = self.__client.send_get(uri='find_content/', data=request_json)
+        return response
 
     def get_metadata(self):
         pass
