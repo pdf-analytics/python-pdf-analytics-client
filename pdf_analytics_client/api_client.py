@@ -24,7 +24,7 @@ class JobClass:
         """Wait for the PDF analysis to complete max 20 secs"""
         count = 0
         while self.get_status() == 'In Progress' and count < 10:
-            time.sleep(2)
+            time.sleep(3)
             count += 1
 
         final_status = self.get_status()
@@ -38,6 +38,12 @@ class JobClass:
         return response['status']
 
     def verify_image(self):
+        #_, response = self.__client.send_get(uri="job/{id}/page/{page}/top/{top}/left/{left}/".format(
+        #    id=int(self.id),
+        #    page=int(page),
+        #    top=int(top),
+        #    left=int(left)
+        #))
         pass
 
     def verify_text(self):
@@ -51,9 +57,8 @@ class JobClass:
             'top': int(top),
             'left': int(left)
         }
-
         _, response = self.__client.send_get(uri='find_content/', data=request_json)
-        return response
+        return response.values()[0]
 
     def get_metadata(self):
         pass
@@ -75,7 +80,7 @@ class APIClient:
         file_name = os.path.basename(local_file)
         files = {'file': (file_name, open(local_file, 'rb'))}
         _, response = self.client.send_post(uri='job/upload/', ofile=files)
-        job_obj = JobClass(id=response['id'], client=self.client)
+        job_obj = JobClass(id=int(response['id']), client=self.client)
 
         if wait_to_complete:
             job_obj.wait_analysis_to_complete()

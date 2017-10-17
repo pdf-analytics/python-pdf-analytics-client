@@ -15,10 +15,22 @@ def create_job_analysis_step(context, pdf_path):
     context.config.userdata['job'] = job
 
 
-@then('I verify see the text "{text}" at the pdf, at left "{left}", top "{top}", page "{page}"')
+@then('I read "{text}", at [left, top] ["{left}", "{top}"] on page "{page}" in pdf')
 def verify_text_from_pdf_step(context, text, left, top, page):
-
     job = context.config.userdata['job']
     item = job.get_item(left=left, top=top, page=page)
-    print(item)
-    assert text in item[0]['text']
+    assert text in item['text'], "Comparing: {actual}, {expected}".format(actual=text,expected=item['text'])
+
+
+@then('I check font of the text at [left, top] ["{left}", "{top}"] on page "{page}" in pdf, is "{font}"')
+def verify_text_from_pdf_step(context, left, top, page, font):
+    job = context.config.userdata['job']
+    item = job.get_item(left=left, top=top, page=page)
+    assert font in item['font'], "Comparing: {actual}, {expected}".format(actual=font,expected=item['font'])
+
+
+@then('I see the image "{path}", at [left, top] ["{left}", "{top}"] on page "{page}" in pdf')
+def verify_text_from_pdf_step(context, path, left, top, page):
+    job = context.config.userdata['job']
+    item = job.verify_image(left=left, top=top, page=page)
+    assert text in item['text'], "Comparing: {actual}, {expected}".format(actual=text,expected=item['text'])
