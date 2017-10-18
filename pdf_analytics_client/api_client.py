@@ -37,14 +37,22 @@ class JobClass:
         _, response = self.__client.send_get(uri='job/{id}/get_status/'.format(id=self.id))
         return response['status']
 
-    def verify_image(self):
-        #_, response = self.__client.send_get(uri="job/{id}/page/{page}/top/{top}/left/{left}/".format(
-        #    id=int(self.id),
-        #    page=int(page),
-        #    top=int(top),
-        #    left=int(left)
-        #))
-        pass
+    def verify_image(self, local_file, left, top, page):
+        request_json = {
+            'id': int(self.id),
+            'page': int(page),
+            'top': int(top),
+            'left': int(left)
+        }
+        file_name = os.path.basename(local_file)
+        files = {'image_file': (file_name, open(local_file, 'rb'))}
+        status_code, response = self.__client.send_post(uri='job/verify_image/', data=request_json, ofile=files)
+
+        if status_code != 200:
+            raise Exception(response)
+
+        print(response)
+        return response
 
     def verify_text(self):
         pass
