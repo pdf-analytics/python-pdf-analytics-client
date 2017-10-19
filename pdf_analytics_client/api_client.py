@@ -99,10 +99,10 @@ class APIClient:
         """Get my account details
 
         :return: a dictionary object with the user's account details
-            {   'max_pdf_size_mb': 3,
+                {   'max_pdf_size_mb': 3,
                 'daily_max_count': 10,
                 'today_remaining': 4,
-            }
+                }
         """
         _, response = self.client.send_get(uri='account_details/')
         return response

@@ -17,8 +17,15 @@ The source is available on: https://github.com/pdf-analytics/python-pdf-analytic
 Contents:
 
 .. toctree::
-    :numbered:
+   :maxdepth: 2
 
-    introduction
-    installation
+   introduction.rst
+   installation.rst
+   references.rst
 
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
