@@ -3,4 +3,4 @@
 
 # Python pyc
 *.pyc
-
+docs/html_out/*

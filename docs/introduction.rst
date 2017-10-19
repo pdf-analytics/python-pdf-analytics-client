@@ -17,7 +17,7 @@ PyPDFAnalyticsClient can verify :
 Examples
 ========
 
-This example asserts there is the *figure.png* image on page 4 inside the *demo.pdf*
+This example asserts there is the *figure.png* image on page 4 inside the *demo.pdf* PDF file.
 
 .. code:: python
 
@@ -31,7 +31,7 @@ Dependencies
 ============
 
 
-
+PyPDFAnalyticsClient has only one dependency **requests**
 On Windows, PyAutoGUI has no dependencies (other than Pillow and some other modules, which are installed by pip along with PyAutoGUI). It does **not** need the ``pywin32`` module installed since it uses Python's own ``ctypes`` module.
 
 On OS X, PyAutoGUI requires PyObjC_ installed for the AppKit and Quartz modules. The module names on PyPI to install are ``pyobjc-core`` and ``pyobjc`` (in that order).

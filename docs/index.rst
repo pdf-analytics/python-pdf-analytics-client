@@ -13,14 +13,7 @@ allows you to automate most common **PDFAnalytics** operations using Python 3.6.
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+    :numbered:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+    introduction
 
