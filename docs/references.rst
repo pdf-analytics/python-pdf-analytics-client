@@ -4,6 +4,8 @@
 References
 ==========
 
+This is a quickstart reference to using PyPDFAnalyticsClient.
+
 .. automodule:: api_client
 
 .. autoclass:: APIClient

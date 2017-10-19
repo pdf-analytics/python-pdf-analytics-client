@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 """
-PDFAnalytics API Client
+---------------------
+ PDF Analytics Client
+---------------------
 
-A high level module that enables the submission of the test cases and the
-test results to the MatrixMedicalRequirements.
+The PDF Analytics Client is a high level module that enables the verification of the images and text of a
+local PDF file.
 
-It uploads both the test results and the test description at tht same time.
 """
 import os
 import time
@@ -21,7 +22,14 @@ class JobClass:
         self.__client = client
 
     def wait_analysis_to_complete(self):
-        """Wait for the PDF analysis to complete max 20 secs"""
+        """Wait for the PDF analysis to complete
+
+        After you submit the PDF to PDF Analytics website, the takes some seconds until
+        it is ready to be used for verification.
+
+        :return: If the analysis is completed and returns *True* else if in 20 seconds the job is
+                 not complete, returns *False*
+        """
         count = 0
         while self.get_status() == 'In Progress' and count < 10:
             time.sleep(3)
@@ -29,35 +37,68 @@ class JobClass:
 
         final_status = self.get_status()
         if final_status == 'In Progress':
-            raise Exception('The job was not processed in 20 seconds')
+            return False
         else:
-            return
+            return True
 
     def get_status(self):
+        """Get the status of the PDF analysis
+
+        :return: The analysis status as string. The string can be "In progress", "Error" or "Complete"
+        """
         _, response = self.__client.send_get(uri='job/{id}/get_status/'.format(id=self.id))
         return response['status']
 
-    def verify_image(self, local_file, left, top, page):
+    def verify_image(self, path, left, top, page, compare_method="pbp", tolerance=0.0):
+        """ Verify a local image file exists in the PDF
+
+        :param path: The absolute or relative path of the locally stored image e.g. '/User/tester/apple.png'
+        :param left: Distance from the *left* of the page in *points*. Accepts single integer. e.g. 150
+        :param top: Distance from the *top* of the page in *points*. Accepts single integer. e.g 200
+        :param page: Number of page, e.g. 4
+        :param compare_method: Image comparison method
+        :param tolerance: Comparison tolerance. Default value 0.0. Example: 0.02
+        :return: If the Returns in JSON the image item.
+        """
         request_json = {
             'id': int(self.id),
             'page': int(page),
             'top': int(top),
-            'left': int(left)
+            'left': int(left),
+            'compare_method': compare_method,
+            'tolerance': tolerance
         }
-        file_name = os.path.basename(local_file)
-        files = {'image_file': (file_name, open(local_file, 'rb'))}
+
+        full_path = os.path.abspath(path)
+        file_name = os.path.basename(full_path)
+        files = {'image_file': (file_name, open(full_path, 'rb'))}
         status_code, response = self.__client.send_post(uri='job/verify_image/', data=request_json, ofile=files)
 
         if status_code != 200:
             raise Exception(response)
 
-        print(response)
         return response
 
-    def verify_text(self):
+    def verify_text(self, text, left, top, page):
+        """ Verify a text exists in the PDF (TODO)
+
+        :param text: The text content. Accepts string. e.g. 'This is a document'
+        :param left: Distance from the *left* of the page in *points*. Accepts single integer. e.g. 150
+        :param top: Distance from the *top* of the page in *points*. Accepts single integer. e.g 200
+        :param page: Number of page, e.g. 4
+        :return:
+        """
         pass
 
     def get_item(self, left, top, page, type='any'):
+        """Get any item from the PDF (TODO)
+
+        :param left: Distance from the *left* of the page in *points*. Accepts single integer. e.g. 150
+        :param top: Distance from the *top* of the page in *points*. Accepts single integer. e.g 200
+        :param page: Number of page, e.g. 4
+        :param type: Type of the the item.
+        :return:
+        """
         request_json = {
             'id': int(self.id),
             'page': int(page),
@@ -78,11 +119,11 @@ class APIClient:
     def __init__(self, token):
         self.client = APIRequest(token=token)
 
-    def create_job(self, local_file, wait_to_complete=False):
+    def create_job(self, local_file, wait_to_complete=True):
         """Create a PDF analysis job
 
         :param local_file: the path of the local PDF file that needs to be uploaded to the server for the analysis
-        :param wait_to_complete: wait for the PDF analysis to complete
+        :param wait_to_complete: wait for the PDF analysis to complete. Default value is True.
         :return: The JobClass object,
         """
         file_name = os.path.basename(local_file)

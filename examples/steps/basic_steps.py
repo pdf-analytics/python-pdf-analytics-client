@@ -31,5 +31,5 @@ def verify_text_from_pdf_step(context, left, top, page, font):
 def verify_text_from_pdf_step(context, img_filename, left, top, page):
     job = context.config.userdata['job']
     img_path = os.path.join(context.project_dir, img_filename)
-    job.verify_image(local_file=img_path, left=left, top=top, page=page)
+    job.verify_image(path=img_path, left=left, top=top, page=page)
     #assert text in item['text'], "Comparing: {actual}, {expected}".format(actual=text,expected=item['text'])
