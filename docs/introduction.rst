@@ -22,21 +22,20 @@ This example asserts there is the *figure.png* image on page 4 inside the *demo.
 .. code:: python
 
     >>> from pdf_analytics_client import APIClient
-    >>> analytics_server = APIClient(token='my_token')
-    >>> new_pdf_job = analytics_server.create_job(local_file='/Users/tester/demo.pdf')
-    >>> new_pdf_job.assertImage(local_img='/Users/tester/figure.png', coords={'top':24,'left':64, 'page':4})
+    >>> server = APIClient(token='my_token')
+    >>> pdf_job = server.create_job(local_file='/Users/tester/demo.pdf')
+    >>> pdf_job.verify_image(local_img='/Users/tester/figure.png', top=24, left=64, page=4)
 
 
 Dependencies
 ============
 
 
-PyPDFAnalyticsClient has only one dependency **requests**
-On Windows, PyAutoGUI has no dependencies (other than Pillow and some other modules, which are installed by pip along with PyAutoGUI). It does **not** need the ``pywin32`` module installed since it uses Python's own ``ctypes`` module.
+PyPDFAnalyticsClient has only one dependency `python-requests <http://docs.python-requests.org/en/master/user/install/>`_ .
 
-On OS X, PyAutoGUI requires PyObjC_ installed for the AppKit and Quartz modules. The module names on PyPI to install are ``pyobjc-core`` and ``pyobjc`` (in that order).
+To run the **examples** you need also the `python-behave <http://pythonhosted.org/behave//>`_ . To install all dependencies :
 
-.. _PyObjC: http://pythonhosted.org/pyobjc/install.html
+.. code-block:: python
 
-On Linux, PyAutoGUI requires ``python-xlib`` (for Python 2) or ``python3-Xlib`` (for Python 3) module installed.
+   pip install requirements
 
