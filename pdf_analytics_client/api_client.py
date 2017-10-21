@@ -11,7 +11,7 @@ local PDF file.
 import os
 import time
 
-from pdf_analytics_client.api_request import APIRequest
+from api_request import APIRequest
 
 
 class JobClass:
