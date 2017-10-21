@@ -1,4 +1,10 @@
 # python-pdf-analytics-client
+
+<a href='http://pdf-analytics-client-library.readthedocs.io/en/latest/?badge=latest'>
+    <img src='https://readthedocs.org/projects/pdf-analytics-client-library/badge/?version=latest' alt='Documentation Status' />
+</a>
+      
+      
 PDF Analytics client API library
 
 PDF Analytics is a web service which lets you use to verify PDF content for free. 
