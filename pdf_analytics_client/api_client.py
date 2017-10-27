@@ -29,6 +29,8 @@ class JobClass:
 
         :return: If the analysis is completed and returns *True* else if in 20 seconds the job is
                  not complete, returns *False*
+        :rtype: bool
+
         """
         count = 0
         while self.get_status() == 'In Progress' and count < 10:
@@ -45,6 +47,7 @@ class JobClass:
         """Get the status of the PDF analysis
 
         :return: The analysis status as string. The string can be "In progress", "Error" or "Complete"
+        :rtype: str
         """
         _, response = self.__client.send_get(uri='job/{id}/get_status/'.format(id=self.id))
         return response['status']
@@ -55,14 +58,16 @@ class JobClass:
         :param path: The absolute or relative path of the locally stored image e.g. '/User/tester/apple.png'
         :param left: Distance from the *left* of the page in *points*. Accepts single integer. e.g. 150
         :param top: Distance from the *top* of the page in *points*. Accepts single integer. e.g 200
-        :param page: Number of page, e.g. 4
+        :param page: Number of page, e.g. an integer 4 or a string 'all', 'last', '1-4'
         :param compare_method: Image comparison method
         :param tolerance: Comparison tolerance. Default value 0.0. Example: 0.02
-        :return: If the Returns in JSON the image item.
+        :return: If the request is sucessfull it returns 200. If it is not successful it returns the error message.
+        :rtype: JSON
+
         """
         request_json = {
             'id': int(self.id),
-            'page': int(page),
+            'page': str(page),
             'top': int(top),
             'left': int(left),
             'compare_method': compare_method,
@@ -74,21 +79,39 @@ class JobClass:
         files = {'image_file': (file_name, open(full_path, 'rb'))}
         status_code, response = self.__client.send_post(uri='job/verify_image/', data=request_json, ofile=files)
 
-        if status_code != 200:
-            raise Exception(response)
+        #if status_code != 200:
+        #    raise Exception(response)
 
         return response
 
-    def verify_text(self, text, left, top, page):
-        """ Verify a text exists in the PDF (TODO)
+    def verify_text(self, text, left, top, page, method='contains'):
+        """ Verify a text exists in the PDF
 
-        :param text: The text content. Accepts string. e.g. 'This is a document'
+        :param text: The expected textural content. Accepts string. e.g. 'This is the expected text'
         :param left: Distance from the *left* of the page in *points*. Accepts single integer. e.g. 150
         :param top: Distance from the *top* of the page in *points*. Accepts single integer. e.g 200
-        :param page: Number of page, e.g. 4
-        :return:
+        :param page: Number of page, e.g. an integer 4 or a string 'all', 'last', '1-4'
+        :param method: Text comparison method
+        :return: If the request is sucessfull it returns 200. If it is not successful it returns the error message.
         """
-        pass
+        text_comparison_method = {
+            'contains' : 'contains',
+            'ends_with' : 'ends_with',
+            'starts_with' : 'starts_with',
+            'exact_content' : 'exact_content'
+        }
+
+        request_json = {
+            'id': int(self.id),
+            'page': str(page),
+            'expected_text' : str(text),
+            'method': text_comparison_method.get(method),
+            'top': int(top),
+            'left': int(left)
+        }
+
+        _, response = self.__client.send_get(uri='job/verify_text/', data=request_json)
+        return response
 
     def get_item(self, left, top, page, type='any'):
         """Get any item from the PDF (TODO)
@@ -97,7 +120,7 @@ class JobClass:
         :param top: Distance from the *top* of the page in *points*. Accepts single integer. e.g 200
         :param page: Number of page, e.g. 4
         :param type: Type of the the item.
-        :return:
+        :return: A JSON object with the item's information
         """
         request_json = {
             'id': int(self.id),
