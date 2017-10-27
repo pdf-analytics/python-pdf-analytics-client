@@ -8,9 +8,10 @@ Feature: Verify PDF content on run
         And I check font of the text at [left, top] ["118", "65"] on page "1" in pdf, is "LiberationSerif, 15.41"
         And I read "Text at the top of the second page.", at [left, top] ["147", "65"] on page "2" in pdf
         And I see the image "apple.jpeg", at [left, top] ["300", "250"] on page "1" in pdf
+
         # Metadata
         # signed
         # Author
         #try different font size
 
-
+        # text on every page e.g. 3-5, all, last, 2,5  

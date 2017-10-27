@@ -14,10 +14,9 @@ import requests
 class APIRequest(object):
     """Basic API client class"""
 
-    def __init__(self, token):
+    def __init__(self, token, url):
         self.token = token
-        #self.__url = 'https://pdf-analytics.com/api/'
-        self.__url = 'http://localhost:8000/api/'
+        self.__url = url
 
     def send_get(self, uri, data=None, ojson=None):
         """ Send GET

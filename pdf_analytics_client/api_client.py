@@ -92,19 +92,19 @@ class JobClass:
         :param top: Distance from the *top* of the page in *points*. Accepts single integer. e.g 200
         :param page: Number of page, e.g. an integer 4 or a string 'all', 'last', '1-4'
         :param method: Text comparison method
-        :return: If the request is sucessfull it returns 200. If it is not successful it returns the error message.
+        :return: If the request is successful it returns 200. If it is not successful it returns the error message.
         """
         text_comparison_method = {
-            'contains' : 'contains',
-            'ends_with' : 'ends_with',
-            'starts_with' : 'starts_with',
-            'exact_content' : 'exact_content'
+            'contains': 'contains',
+            'ends_with': 'ends_with',
+            'starts_with': 'starts_with',
+            'exact_content': 'exact_content'
         }
 
         request_json = {
             'id': int(self.id),
             'page': str(page),
-            'expected_text' : str(text),
+            'expected_text': str(text),
             'method': text_comparison_method.get(method),
             'top': int(top),
             'left': int(left)
@@ -139,8 +139,8 @@ class JobClass:
 class APIClient:
     """Main API client class"""
 
-    def __init__(self, token):
-        self.client = APIRequest(token=token)
+    def __init__(self, token, url='https://pdf-analytics.com/api/'):
+        self.client = APIRequest(token=token, url=url)
 
     def create_job(self, local_file, wait_to_complete=True):
         """Create a PDF analysis job
@@ -157,6 +157,15 @@ class APIClient:
         if wait_to_complete:
             job_obj.wait_analysis_to_complete()
 
+        return job_obj
+
+    def get_job(self, job_id):
+        """Get PDF analysis job
+
+        :param job_id: the PDF analysis job ID
+        :return: The JobClass object,
+        """
+        job_obj = JobClass(id=int(job_id), client=self.client)
         return job_obj
 
     def get_account_details(self):
