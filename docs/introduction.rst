@@ -11,8 +11,11 @@ The purpose of PyPDFAnalyticsClient is to provide a library that would help you 
 using its REST API.
 
 PyPDFAnalyticsClient can verify :
+
 - *textural content*, like text, font style, its location (using coordinates and page number)
-- *image content* based on a locally stored image (pixel-by-pixel comparison), its actual size and location in the PDF
+
+- *image content* based on a locally stored image (pixel-by-pixel comparison),
+  its actual size and location in the PDF
 
 Examples
 ========
