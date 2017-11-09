@@ -8,5 +8,10 @@ from pdf_analytics_client import APIClient
 
 def before_all(context):
     """Setup to create a session with the PDFAnalytics cloud"""
-    context.config.userdata['client'] = APIClient(token=context.config.userdata['token'])
+    if context.config.userdata.get('url', False):
+        context.config.userdata['client'] = APIClient(token=context.config.userdata['token'],
+                                                      url=context.config.userdata['url'])
+    else:
+        context.config.userdata['client'] = APIClient(token=context.config.userdata['token'])
+
     context.project_dir = os.path.dirname(os.path.abspath(__file__))

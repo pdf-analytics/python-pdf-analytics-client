@@ -114,7 +114,7 @@ class JobClass:
         return response
 
     def get_item(self, left, top, page, type='any'):
-        """Get any item from the PDF (TODO)
+        """Get any item from the PDF (TODO: get figure)
 
         :param left: Distance from the *left* of the page in *points*. Accepts single integer. e.g. 150
         :param top: Distance from the *top* of the page in *points*. Accepts single integer. e.g 200
@@ -133,7 +133,12 @@ class JobClass:
         return response.values()[0]
 
     def get_metadata(self):
-        pass
+        """Get the metadata of the PDF
+
+        :return: A JSON object with the metadata of the PDF
+        """
+        _, response = self.__client.send_get(uri='job/{id}/metadata/'.format(id=self.id))
+        return response
 
 
 class APIClient:

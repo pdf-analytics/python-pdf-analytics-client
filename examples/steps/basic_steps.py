@@ -33,3 +33,10 @@ def verify_text_from_pdf_step(context, img_filename, left, top, page):
     img_path = os.path.join(context.project_dir, img_filename)
     job.verify_image(path=img_path, left=left, top=top, page=page)
     #assert text in item['text'], "Comparing: {actual}, {expected}".format(actual=text,expected=item['text'])
+
+
+@then('I check the metadata key "{key}" that is "{value}"')
+def verify_text_from_pdf_step(context, key, value):
+    job = context.config.userdata['job']
+    actual_value = job.get_metadata()['metadata'].get(key, None)
+    assert value == actual_value, "Comparing: {actual}, {expected}".format(actual=actual_value, expected=value)
