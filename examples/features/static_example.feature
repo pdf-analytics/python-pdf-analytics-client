@@ -11,9 +11,7 @@ Feature: Verify PDF content on run
         And I check the metadata key "Creator" that is "Writer"
         And I check the metadata key "Producer" that is "LibreOffice 4.3"
 
-        # Metadata
         # signed
-        # Author
         #try different font size
-
+        # PDF to PDF comparison
         # text on every page e.g. 3-5, all, last, 2,5

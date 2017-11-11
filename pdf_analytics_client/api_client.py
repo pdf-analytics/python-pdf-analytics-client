@@ -61,7 +61,7 @@ class JobClass:
         :param page: Number of page, e.g. an integer 4 or a string 'all', 'last', '1-4'
         :param compare_method: Image comparison method
         :param tolerance: Comparison tolerance. Default value 0.0. Example: 0.02
-        :return: If the request is sucessfull it returns 200. If it is not successful it returns the error message.
+        :return: If the request is successful it returns 200. If it is not successful it returns the error message.
         :rtype: JSON
 
         """
@@ -79,9 +79,30 @@ class JobClass:
         files = {'image_file': (file_name, open(full_path, 'rb'))}
         status_code, response = self.__client.send_post(uri='job/verify_image/', data=request_json, ofile=files)
 
-        #if status_code != 200:
-        #    raise Exception(response)
+        return response
 
+    def verify_pdf(self, path, excluded_areas='', tolerance=0.0):
+        """ Verify a local PDF file with the uploaded job's PDF
+
+        :param path: The absolute or relative path of the locally stored PDF ilfe e.g. '/User/tester/report.pdf'
+        :param excluded_areas: Excluded areas. List field. Example : [
+                               {'left':146, 'top':452, 'width':97, 'height':13,'page':2},
+                               {'left': 414, 'top': 747, 'width': 45, 'height': 16, 'page': 'all'},]
+        :param tolerance: Comparison tolerance. Default value 0.0. Example: 0.02
+        :return: If the request is successful it returns 200. If it is not successful it returns the error message.
+        :rtype: JSON
+
+        """
+        request_json = {
+            'id': int(self.id),
+            'excluded_areas': excluded_areas,
+            'tolerance': tolerance
+        }
+
+        full_path = os.path.abspath(path)
+        file_name = os.path.basename(full_path)
+        files = {'pdf_file': (file_name, open(full_path, 'rb'))}
+        status_code, response = self.__client.send_post(uri='job/verify_pdf/', data=request_json, ofile=files)
         return response
 
     def verify_text(self, text, left, top, page, method='contains'):
