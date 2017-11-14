@@ -91,7 +91,6 @@ class JobClass:
         :param tolerance: Comparison tolerance. Default value 0.0. Example: 0.02
         :return: If the request is successful it returns 200. If it is not successful it returns the error message.
         :rtype: JSON
-
         """
         request_json = {
             'id': int(self.id),
