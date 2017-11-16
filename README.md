@@ -14,5 +14,5 @@ You may find the official documentation here : http://pdf-analytics-client-libra
 # Install
 
 ```
-pip install python-pdf-analytics-client (TODO)
+pip install python-pdf-analytics-client
 ```

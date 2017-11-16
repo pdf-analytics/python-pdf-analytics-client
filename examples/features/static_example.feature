@@ -10,6 +10,8 @@ Feature: Verify PDF content on run
         And I see the image "apple.jpeg", at [left, top] ["300", "250"] on page "1" in pdf
         And I check the metadata key "Creator" that is "Writer"
         And I check the metadata key "Producer" that is "LibreOffice 4.3"
+        And I see the image "apple.jpeg", at [left, top] ["300", "250"] on page "1" in pdf
+        And I see the image "apple.jpeg", at [left, top] ["300", "250"] on page "1" in pdf
 
         # signed
         #try different font size

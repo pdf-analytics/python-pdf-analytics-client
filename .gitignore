@@ -4,3 +4,8 @@
 # Python pyc
 *.pyc
 docs/html_out/*
+
+# Setup for pip
+MANIFEST
+build/*
+dist/*
