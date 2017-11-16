@@ -31,8 +31,8 @@ def verify_text_from_pdf_step(context, left, top, page, font):
 def verify_text_from_pdf_step(context, img_filename, left, top, page):
     job = context.config.userdata['job']
     img_path = os.path.join(context.project_dir, img_filename)
-    job.verify_image(path=img_path, left=left, top=top, page=page)
-    #assert text in item['text'], "Comparing: {actual}, {expected}".format(actual=text,expected=item['text'])
+    response = job.verify_image(path=img_path, left=left, top=top, page=page)
+    assert response['result'] is True, "Comparing the image, message: {message}".format(message=response['message'])
 
 
 @then('I check the metadata key "{key}" that is "{value}"')
@@ -40,3 +40,12 @@ def verify_text_from_pdf_step(context, key, value):
     job = context.config.userdata['job']
     actual_value = job.get_metadata()['metadata'].get(key, None)
     assert value == actual_value, "Comparing: {actual}, {expected}".format(actual=actual_value, expected=value)
+
+
+@then('I compare the "{pdf_file}" with the uploaded pdf')
+def verify_text_from_pdf_step(context, pdf_file):
+    job = context.config.userdata['job']
+    full_path = os.path.join(context.project_dir, pdf_file)
+    response = job.verify_pdf(path=full_path)
+    assert response['result'] is True, "Comparing the pdf, message: {message}".format(message=response['message'])
+

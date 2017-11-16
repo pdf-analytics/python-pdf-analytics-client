@@ -62,7 +62,7 @@ class APIRequest(object):
         # Return a json file, if the response is JSON
         try:
             json_object = json.loads(api_request.text)
-        except ValueError, e:
+        except ValueError:
             return api_request.status_code, api_request.text
 
         return api_request.status_code, json_object
