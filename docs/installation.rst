@@ -4,22 +4,22 @@
 Installation
 ============
 
-To install PyPDFAnalyticsClient, install the `pdf_analytics_client` package from PyPI and dependencies.
+To install python-pdf-analytics-client, install the `python-pdf-analytics-client` package from PyPI and dependencies.
 
 On Windows, this is:
 
-    ``C:\Python27\pip.exe install pdf_analytics_client``
+    ``C:\Python27\pip.exe install python-pdf-analytics-client``
 
 (Though you may have a different version of Python installed other than 2.7)
 
 On OS X, this is:
 
-    ``pip install pdf_analytics_client``
+    ``pip install python-pdf-analytics-client``
 
 
 On Linux, this is:
 
-    ``pip install pdf_analytics_client``
+    ``pip install python-pdf-analytics-client``
 
 
-PyPDFAnalyticsClient will try to install python requests. This happens when pip installs PyPDFAnalyticsClient.
+**python-pdf-analytics-client** will try to install python requests. This happens when pip installs python-pdf-analytics-client.

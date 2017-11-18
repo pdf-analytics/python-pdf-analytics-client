@@ -3,14 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to PDF Analytics Client API's documentation!
-====================================================
+Welcome to python-pdf-analytics-client API's documentation!
+===========================================================
 
 **PDFAnalytics** is a web service which lets you use to verify PDF content for free.
 
-This **PyPDFAnalyticsClient** allows you to automate most common **PDFAnalytics** operations using Python 3.6.
+This **python-pdf-analytics-client** library allows you to automate most common **PDFAnalytics** operations using Python 3.6.
 
-**PyPDFAnalyticsClient** can be installed from the ``pip`` tool or downloaded from PyPI: https://pypi.python.org/pypi/PyPDFAnalyticsClient
+**python-pdf-analytics-client** can be installed from the ``pip`` tool or downloaded from PyPI: https://pypi.python.org/pypi/python-pdf-analytics-client
 
 The source is available on: https://github.com/pdf-analytics/python-pdf-analytics-client
 

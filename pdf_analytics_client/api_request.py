@@ -50,9 +50,9 @@ class APIRequest(object):
         # Make the request
         url = self.__url + uri
         if method == 'POST':
-            api_request = requests.post(url, headers=headers, data=data, files=ofile, verify=False)
+            api_request = requests.post(url, headers=headers, data=data, files=ofile, verify=True)
         elif method == 'GET':
-            api_request = requests.get(url, headers=headers, data=data, json=ojson, verify=False)
+            api_request = requests.get(url, headers=headers, data=data, json=ojson, verify=True)
         else:
             raise Exception('Method not found')
 
