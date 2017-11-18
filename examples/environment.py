@@ -15,3 +15,7 @@ def before_all(context):
         context.config.userdata['client'] = APIClient(token=context.config.userdata['token'])
 
     context.project_dir = os.path.dirname(os.path.abspath(__file__))
+
+
+def before_scenario(context, scenario):
+    scenario.continue_after_failed_step = True
