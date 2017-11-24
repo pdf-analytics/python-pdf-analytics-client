@@ -23,6 +23,7 @@ Contents:
    introduction.rst
    installation.rst
    references.rst
+   CHANGELOG.rst
 
 Indices and tables
 ==================
