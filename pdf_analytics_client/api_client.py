@@ -8,10 +8,13 @@ The PDF Analytics Client is a high level module that enables the verification of
 local PDF file.
 
 """
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import os
 import time
 
-from api_request import APIRequest
+
+from .api_request import APIRequest
 
 
 class JobClass:
@@ -150,7 +153,7 @@ class JobClass:
             'left': int(left)
         }
         _, response = self.__client.send_get(uri='find_content/', data=request_json)
-        return response.values()[0]
+        return list(response.values())[0]
 
     def get_metadata(self):
         """Get the metadata of the PDF

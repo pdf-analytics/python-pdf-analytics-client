@@ -6,7 +6,7 @@
       
       
 **PDFAnalytics** is a web service which lets you use to verify PDF content for free. 
-This **PyPDFAnalyticsClient** allows you to automate most common PDFAnalytics operations using Python 2.7.
+This **PyPDFAnalyticsClient** allows you to automate most common PDFAnalytics operations using Python 2 or Python 3.
 
 You may find the official documentation here : http://pdf-analytics-client-library.readthedocs.io/ 
 

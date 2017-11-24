@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.3
+-----
+#. Add Python 3 support
+
 1.0.2
 -----
 #. Add Categories and keywords in pip / setup

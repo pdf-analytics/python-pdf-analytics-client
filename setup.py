@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='python-pdf-analytics-client',
-    version='1.0.2',
+    version='1.0.3',
     packages=['pdf_analytics_client'],
     url='https://pdf-analytics.com',
     license='MIT License ',
@@ -29,12 +29,13 @@ setup(
     'Programming Language :: Python :: 2',
     'Programming Language :: Python :: 2.6',
     'Programming Language :: Python :: 2.7',
+    'Programming Language :: Python :: 3',
 
     'Operating System :: MacOS',
     'Operating System :: Microsoft :: Windows',
     'Operating System :: Unix',
 ],
-    description='PyPDFAnalyticsClient allows you to automate most common PDFAnalytics (https://pdf-analytics.com) operations using Python 2. ',
-    long_description="PyPDFAnalyticsClient allows you to automate most common PDFAnalytics (https://pdf-analytics.com) operations using Python 2. You may access the documentation page from here : http://pdf-analytics-client-library.readthedocs.io/en/latest/. You may access the GitHub repository from here : https://github.com/pdf-analytics/python-pdf-analytics-client ."
+    description='PyPDFAnalyticsClient allows you to automate most common PDFAnalytics (https://pdf-analytics.com) operations using Python 2 or Python 3. ',
+    long_description="PyPDFAnalyticsClient allows you to automate most common PDFAnalytics (https://pdf-analytics.com) operations using Python 2 or Python 3. You may access the documentation page from here : http://pdf-analytics-client-library.readthedocs.io/en/latest/. You may access the GitHub repository from here : https://github.com/pdf-analytics/python-pdf-analytics-client ."
 
 )

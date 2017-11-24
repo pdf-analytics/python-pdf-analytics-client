@@ -7,6 +7,8 @@ A low level module that handles the HTTP request calls.
 Usage :
 from pdf_analytics_client import APIRequest
 """
+from __future__ import absolute_import, division, print_function, unicode_literals
+
 import json
 import requests
 

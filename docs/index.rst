@@ -8,7 +8,8 @@ Welcome to python-pdf-analytics-client API's documentation!
 
 **PDFAnalytics** is a web service which lets you use to verify PDF content for free.
 
-This **python-pdf-analytics-client** library allows you to automate most common **PDFAnalytics** operations using Python 3.6.
+This **python-pdf-analytics-client** library allows you to automate most common **PDFAnalytics** operations using
+Python 2 or Python 3.
 
 **python-pdf-analytics-client** can be installed from the ``pip`` tool or downloaded from PyPI: https://pypi.python.org/pypi/python-pdf-analytics-client
 
