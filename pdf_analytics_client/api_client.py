@@ -13,8 +13,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import os
 import time
 
-
-from .api_request import APIRequest
+from api_request import APIRequest
 
 
 class JobClass:
