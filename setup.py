@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='python-pdf-analytics-client',
-    version='1.0.3',
+    version='1.0.5',
     packages=['pdf_analytics_client'],
     url='https://pdf-analytics.com',
     license='MIT License ',

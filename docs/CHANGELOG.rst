@@ -6,6 +6,10 @@ Changelog
 
 This document will track major changes in the project.
 
+1.0.5, December 11, 2017
+========================
+- Fix ModuleNotFoundError
+
 1.0.4, November 25, 2017
 ========================
 - Fix the documentation

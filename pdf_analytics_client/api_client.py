@@ -13,8 +13,8 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import os
 import time
 
-from api_request import APIRequest
 
+from pdf_analytics_client.api_request import APIRequest
 
 class JobClass:
     """Basic PDF analysis Job class """
