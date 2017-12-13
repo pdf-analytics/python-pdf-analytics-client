@@ -12,8 +12,8 @@ Feature: Verify PDF content
 
     Scenario: Verify figures
         Given the pdf file "demo_file.pdf" is sent to be analysed
-        Then I see the image "apple.png", at [left, top] ["300", "250"] on page "1" in pdf
-        And I see the image "apple_diff.png", at [left, top] ["300", "250"] on page "1" in pdf
+        Then I "can" see the image "apple.png", at [left, top] ["300", "250"] on page "1" in pdf
+        And I "cannot" see the image "apple_diff.png", at [left, top] ["300", "250"] on page "1" in pdf
 
 
     Scenario: Verify PDF with PDF

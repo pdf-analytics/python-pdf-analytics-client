@@ -6,6 +6,10 @@ Changelog
 
 This document will track major changes in the project.
 
+1.0.6, December 13, 2017
+========================
+- Add requests as dependency
+
 1.0.5, December 11, 2017
 ========================
 - Fix ModuleNotFoundError

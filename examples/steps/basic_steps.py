@@ -29,12 +29,15 @@ def verify_text_from_pdf_step(context, left, top, page, font):
     assert font in item['font'], "Comparing: {actual}, {expected}".format(actual=font,expected=item['font'])
 
 
-@then('I see the image "{img_filename}", at [left, top] ["{left}", "{top}"] on page "{page}" in pdf')
-def verify_text_from_pdf_step(context, img_filename, left, top, page):
+@then('I "{action}" see the image "{img_filename}", at [left, top] ["{left}", "{top}"] on page "{page}" in pdf')
+def verify_text_from_pdf_step(context, action, img_filename, left, top, page):
     job = context.config.userdata['job']
     img_path = os.path.join(context.project_dir, img_filename)
     response = job.verify_image(path=img_path, left=left, top=top, page=page)
-    assert response['result'] is True, "Comparing the image, message: {message}".format(message=response['message'])
+    if action == 'can':
+        assert response['result'] is True, "Comparing the image, message: {message}".format(message=response['message'])
+    else:
+        assert response['result'] is False, "Comparing the image, message: {message}".format(message=response['message'])
 
 
 @then('I check the metadata key "{key}" that is "{value}"')

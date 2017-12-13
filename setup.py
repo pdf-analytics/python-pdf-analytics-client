@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='python-pdf-analytics-client',
-    version='1.0.5',
+    version='1.0.6',
     packages=['pdf_analytics_client'],
     url='https://pdf-analytics.com',
     license='MIT License ',
@@ -10,6 +10,7 @@ setup(
     author_email='info@pdf-analytics.com',
     download_url='https://github.com/pdf-analytics/python-pdf-analytics-client',
     keywords='testing pdf inspection python automated testing software testing pdf-analytics.com',
+    install_requires=['requests>=2.13.0'],
     classifiers=[
     # How mature is this project? Common values are
     #   3 - Alpha
