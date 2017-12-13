@@ -4,7 +4,7 @@
     <img src='https://readthedocs.org/projects/pdf-analytics-client-library/badge/?version=latest' alt='Documentation Status' />
 </a>
 
-<a href='https://travis-ci.org/pdf-analytics/python-pdf-analytics-client.svg?branch=master'>
+<a href='https://travis-ci.org/pdf-analytics/python-pdf-analytics-client'>
     <img src='https://travis-ci.org/pdf-analytics/python-pdf-analytics-client.svg?branch=master' alt='Documentation Status' />
 </a>
 
