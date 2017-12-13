@@ -3,8 +3,12 @@
 <a href='http://pdf-analytics-client-library.readthedocs.io/en/latest/?badge=latest'>
     <img src='https://readthedocs.org/projects/pdf-analytics-client-library/badge/?version=latest' alt='Documentation Status' />
 </a>
-      
-      
+
+<a href='https://travis-ci.org/pdf-analytics/python-pdf-analytics-client.svg?branch=master'>
+    <img src='https://travis-ci.org/pdf-analytics/python-pdf-analytics-client.svg?branch=master' alt='Documentation Status' />
+</a>
+
+
 **PDFAnalytics** is a web service which lets you use to verify PDF content for free. 
 This **PyPDFAnalyticsClient** allows you to automate most common PDFAnalytics operations using Python 2 or Python 3.
 
