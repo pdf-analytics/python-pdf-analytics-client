@@ -5,4 +5,4 @@ python:
 install:
   - pip install python-pdf-analytics-client behave
 script:
-  - behave examples/features -D token=08ae59edd4f0a35a82dbe3abe858021460024426
+  - behave examples/features -D token=$TOKEN
