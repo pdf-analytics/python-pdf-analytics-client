@@ -8,6 +8,9 @@
     <img src='https://travis-ci.org/pdf-analytics/python-pdf-analytics-client.svg?branch=master' alt='Documentation Status' />
 </a>
 
+<a href="https://hiptest.net/app/projects/68540/test-runs/126017/folder-snapshots/927461" title="Hiptest status">
+    <img src="https://hiptest.net/badges/folder_snapshot/927461" alt="Hiptest status" />
+</a>
 
 **PDFAnalytics** is a web service which lets you use to verify PDF content for free. 
 This **PyPDFAnalyticsClient** allows you to automate most common PDFAnalytics operations using Python 2 or Python 3.
