@@ -6,6 +6,7 @@
 docs/html_out/*
 
 # Setup for pip
+*/reports/*
 MANIFEST
 build/*
 dist/*
