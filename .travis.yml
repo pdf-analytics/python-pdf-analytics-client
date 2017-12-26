@@ -7,4 +7,4 @@ install:
 script:
   - behave examples/features -D token=$TOKEN --junit
 after_script:
-  - curl -X POST -F file=@reports/TESTS-features.static_example.xml https://hiptest.net/import_test_reports/25385772909794281322984130273722149779411468843051961353/126017/junit
+  - curl -X POST -F file=@reports/TESTS-static_example.xml https://hiptest.net/import_test_reports/25385772909794281322984130273722149779411468843051961353/126017/junit
