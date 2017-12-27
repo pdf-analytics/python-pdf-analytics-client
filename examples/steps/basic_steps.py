@@ -19,7 +19,8 @@ def create_job_analysis_step(context, pdf_path):
 def verify_text_from_pdf_step(context, text, left, top, page):
     job = context.config.userdata['job']
     item = job.get_item(left=left, top=top, page=page)
-    assert text in item['text'], "Comparing: {actual}, {expected}".format(actual=text,expected=item['text'])
+    expected_text = item['text'].replace('\n', '<br>')
+    assert text in expected_text, "Comparing: {actual}, {expected}".format(actual=text, expected=expected_text)
 
 
 @then('I check font of the text at [left, top] ["{left}", "{top}"] on page "{page}" in pdf, is "{font}"')
