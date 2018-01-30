@@ -2,7 +2,7 @@ Feature: Verify payslip PDF content
     As a user, I need to check the PDF content is as expected
 
     @TC-4
-    Scenario: Verify payments and logo
+    Scenario: Verify payments and logo @REQ-1, @REQ-3
         Given the pdf file "payslip.pdf" is sent to be analysed
         Then I "can" see the image "payslip_logo.png", at [left, top] ["100", "100"] on page "1" in pdf
         And I read "Total gross <br>payments:", at [left, top] ["74", "599"] on page "1" in pdf
